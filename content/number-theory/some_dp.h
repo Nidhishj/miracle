@@ -18,4 +18,4 @@ int lis(vector<int> const &a) {
   }
   return ans;
 }
-// or segtree lol
+// or segtree lol 
