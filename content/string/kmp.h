@@ -21,7 +21,7 @@ vector<int> KMP(string text, string pattern) {
   for (int i = 0; i < s.length(); i++) {
     if (pi[i] == p) {
       int match_pos = i - 2 * p;
-      matches.push_back(match_pos); // 0-based index in text
+      matches.push_back(match_pos);  // 0-based index in text
     }
   }
   return matches;

@@ -2,10 +2,10 @@
 ```cpp
 #include <bits/stdc++.h>
 
-#define tc                                                                     \
-  int t;                                                                       \
-  cin >> t;                                                                    \
-  while (t--)                                                                  \
+#define tc    \
+  int t;      \
+  cin >> t;   \
+  while (t--) \
     solve();
 using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
@@ -25,16 +25,16 @@ using oset = tree<T, U, cmp, rb_tree_tag, tree_order_statistics_node_update>;
 #define vvi vector<vi>
 #define pb push_back
 #define all(s) s.begin(), s.end()
-#define set_bits                                                               \
-  __builtin_popcountll           // tells the number of setbits or number of 1s
-#define zero_bef __builtin_clzll // number of leading zeroes
+#define set_bits \
+  __builtin_popcountll            // tells the number of setbits or number of 1s
+#define zero_bef __builtin_clzll  // number of leading zeroes
 #define sz(a) (int)a.size()
-#define print(v)                                                               \
-  for (auto printi : v)                                                        \
+#define print(v)        \
+  for (auto printi : v) \
   cout << printi << ' '
 // make a custom tempelate
 
-using T = long long; // Generic type for templates
+using T = long long;  // Generic type for templates
 using ldbl = long double;
 
 void solve() {}

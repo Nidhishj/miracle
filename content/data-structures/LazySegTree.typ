@@ -1,7 +1,7 @@
 == LazySegTree.h
 ```cpp
 class LazySegTree {
-public:
+ public:
   int n;
   vector<T> tree, lazy;
   // ---- in cases of assignment question jaha pe value change krni like assign
@@ -107,8 +107,8 @@ public:
   }
   */
 
-private:
-  T merge(T a, T b) { return a + b; } // can replace with min/max/gcd
-  T identity() { return 0; }          // replace as needed
+ private:
+  T merge(T a, T b) { return a + b; }  // can replace with min/max/gcd
+  T identity() { return 0; }           // replace as needed
 };
 ```

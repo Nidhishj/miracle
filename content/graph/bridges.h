@@ -1,5 +1,5 @@
-int n;                   // number of nodes
-vector<vector<int>> adj; // adjacency list of graph
+int n;                    // number of nodes
+vector<vector<int>> adj;  // adjacency list of graph
 
 vector<bool> visited;
 vector<int> tin, low;

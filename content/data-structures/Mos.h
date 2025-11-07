@@ -22,7 +22,7 @@ void solve() {
   int ans = 0;
   auto add = [&](int v) {};
   auto rem = [&](int v) {};
-  vector<int> out(q); // Change out type if necessary
+  vector<int> out(q);  // Change out type if necessary
   int cur_l = 0, cur_r = -1;
   for (auto &[l, r, id] : queries) {
     while (cur_l > l)

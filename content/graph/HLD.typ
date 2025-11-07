@@ -30,7 +30,8 @@ struct HLD {
   int lca(int u, int v) {
     return process(u, v, [](int, int) {});
   }
-  template <class B> int process(int a, int b, B op, bool ignore_lca = false) {
+  template <class B>
+  int process(int a, int b, B op, bool ignore_lca = false) {
     for (int v;; op(tin[v], tin[b]), b = p[v]) {
       if (tin[a] > tin[b])
         swap(a, b);
@@ -41,7 +42,8 @@ struct HLD {
       op(l, r);
     return a;
   }
-  template <class B> void subtree(int v, B op, bool ignore_lca = false) {
+  template <class B>
+  void subtree(int v, B op, bool ignore_lca = false) {
     if (sub[v] > 1 or !ignore_lca)
       op(tin[v] + ignore_lca, tin[v] + sub[v] - 1);
   }

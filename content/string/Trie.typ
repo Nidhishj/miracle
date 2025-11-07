@@ -1,17 +1,17 @@
 == Trie.h
 ```cpp
 class TrieNode {
-public:
+ public:
   unordered_map<char, TrieNode *> children;
   bool isEndOfWord;
 
   TrieNode() : isEndOfWord(false) {}
 };
 class Trie {
-private:
+ private:
   TrieNode *root;
 
-public:
+ public:
   Trie() { root = new TrieNode(); }
   void insert(const string &word) {
     TrieNode *node = root;

@@ -1,6 +1,6 @@
 // Segment Tree using global T, customizable merge & identity
 class segtree {
-public:
+ public:
   int n;
   vector<T> tree;
 
@@ -40,11 +40,11 @@ public:
                  query(2 * node + 2, mid + 1, end, l, r));
   }
 
-private:
+ private:
   T merge(T a, T b) {
-    return a + b; // change to min/max/gcd as needed
+    return a + b;  // change to min/max/gcd as needed
   }
   T identity() {
-    return 0; // change to INF, 0LL, 1LL, etc.
+    return 0;  // change to INF, 0LL, 1LL, etc.
   }
 };

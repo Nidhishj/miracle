@@ -1,6 +1,7 @@
 == hash.h
 ```cpp
-template <int MOD, int P> struct RH {
+template <int MOD, int P>
+struct RH {
   // using H1 = RH<1000000007, 91138233>;
   // using H2 = RH<1000000009, 97266353>;
   vector<long long> h, p;
@@ -14,7 +15,7 @@ template <int MOD, int P> struct RH {
       p[i + 1] = p[i] * P % MOD;
     }
   }
-  long long get(int l, int r) { // [l,r]
+  long long get(int l, int r) {  // [l,r]
     long long res = (h[r + 1] - h[l] * p[r - l + 1]) % MOD;
     return res < 0 ? res + MOD : res;
   }

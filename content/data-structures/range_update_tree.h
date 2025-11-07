@@ -1,4 +1,5 @@
-template <typename T, typename F> struct RangeUpdateTree {
+template <typename T, typename F>
+struct RangeUpdateTree {
   int n;
   vector<T> tree;
   T identity;
