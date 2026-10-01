@@ -47,6 +47,9 @@
 
 // Add bitwise stuff here
 
+#heading(outlined: true, level: 1)[Theory]
+#include "content/theory/chapter.typ"
+
 // Numerical section not present in `content/` — commented out to avoid include error.
 // #heading(outlined: true, level: 1)[Numerical]
 // #include "content/numerical/chapter.typ"
