@@ -4,4 +4,5 @@
 #include "bellman.typ"
 #include "bridges.typ"
 #include "dijkstra.typ"
+#include "dsu.typ"
 #include "floyd_washall.typ"

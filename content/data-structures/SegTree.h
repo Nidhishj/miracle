@@ -1,50 +1,39 @@
-// Segment Tree using global T, customizable merge & identity
+template <typename T>
+// Iterative segment tree with inclusive range queries
 class segtree {
  public:
   int n;
   vector<T> tree;
 
-  segtree(int size) : n(size) { tree.resize(4 * n + 1); }
+  segtree(int size) : n(size), tree(2 * n, identity()) {}
 
-  void build(int node, int start, int end, const vector<T> &arr) {
-    if (start == end) {
-      tree[node] = arr[start];
-    } else {
-      int mid = (start + end) / 2;
-      build(2 * node + 1, start, mid, arr);
-      build(2 * node + 2, mid + 1, end, arr);
-      tree[node] = merge(tree[2 * node + 1], tree[2 * node + 2]);
-    }
+  segtree(const vector<T>& arr) : n((int)arr.size()), tree(2 * n) {
+    build(arr);
   }
 
-  void update(int node, int start, int end, int idx, T value) {
-    if (start == end) {
-      tree[node] = value;
-    } else {
-      int mid = (start + end) / 2;
-      if (idx <= mid)
-        update(2 * node + 1, start, mid, idx, value);
-      else
-        update(2 * node + 2, mid + 1, end, idx, value);
-      tree[node] = merge(tree[2 * node + 1], tree[2 * node + 2]);
-    }
+  void build(const vector<T>& arr) {
+    n = (int)arr.size();
+    tree.assign(2 * n, identity());
+    copy(arr.begin(), arr.end(), tree.begin() + n);
+    for (int node = n - 1; node > 0; --node)
+      tree[node] = merge(tree[node << 1], tree[node << 1 | 1]);
   }
 
-  T query(int node, int start, int end, int l, int r) {
-    if (r < start || end < l)
-      return identity();
-    if (l <= start && end <= r)
-      return tree[node];
-    int mid = (start + end) / 2;
-    return merge(query(2 * node + 1, start, mid, l, r),
-                 query(2 * node + 2, mid + 1, end, l, r));
+  void update(int idx, T value) {
+    for (tree[idx += n] = value; idx > 1; idx >>= 1)
+      tree[idx >> 1] = merge(tree[idx], tree[idx ^ 1]);
+  }
+
+  T query(int l, int r) {
+    T left_result = identity(), right_result = identity();
+    for (l += n, r += n + 1; l < r; l >>= 1, r >>= 1) {
+      if (l & 1) left_result = merge(left_result, tree[l++]);
+      if (r & 1) right_result = merge(tree[--r], right_result);
+    }
+    return merge(left_result, right_result);
   }
 
  private:
-  T merge(T a, T b) {
-    return a + b;  // change to min/max/gcd as needed
-  }
-  T identity() {
-    return 0;  // change to INF, 0LL, 1LL, etc.
-  }
+  T merge(T a, T b) { return a + b; }  // change to min/max/gcd
+  T identity() { return 0; }           // change to the merge identity
 };

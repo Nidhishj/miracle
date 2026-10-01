@@ -1,4 +1,7 @@
 #include "LazySegTree.typ"
+#include "LazySegTree2D.typ"
 #include "Mos.typ"
+#include "PersistentSegTree.typ"
 #include "SegTree.typ"
+#include "SegTree2D.typ"
 #include "range_update_tree.typ"

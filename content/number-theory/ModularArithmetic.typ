@@ -1,112 +1,60 @@
 == ModularArithmetic.h
 ```cpp
-int add(int x, int y, int m = M) {
-  int ret = (x + y) % m;
-  if (ret < 0)
-    ret += m;
-  return ret;
-}
-int mult(int x, int y, int m = M) {
-  int ret = (x * y) % m;
-  if (ret < 0)
-    ret += m;
-  return ret;
-}
-int pw(int a, int b, int m = M) {
-  int ret = 1;
-  int p = a;
-  while (b) {
-    if (b & 1)
-      ret = mult(ret, p, m);
-    b >>= 1;
-    p = mult(p, p, m);
-  }
-  return ret;
-}
+const long long MOD = 1e9 + 7;
 
-#define LL int
-const long long mod = 1e9 + 7;
-
-int euclid(int a, int b, int &x, int &y) {
-  if (!b)
-    return x = 1, y = 0, a;
-  int d = euclid(b, a % b, y, x);
-  return y -= a / b * x, d;
-}
-
-int modulo_inverse(int a, int m) {
-  int x, y;
-  int g = euclid(a, m, x, y);
-  if (g != 1) {
-    return -1;
-  } else {
-    x = (x % m + m) % m;
-    return x;
-  }
-}
-
-LL mod_mul(LL a, LL b) {
+long long mod_mul(long long a, long long b, long long mod = MOD) {
   a = a % mod;
   b = b % mod;
   return (((a * b) % mod) + mod) % mod;
 }
 
-LL mod_add(LL a, LL b) {
+long long mod_add(long long a, long long b, long long mod = MOD) {
   a = a % mod;
   b = b % mod;
   return (((a + b) % mod) + mod) % mod;
 }
 
-const int MX = 5e5 + 1;
-vector<int> inv(MX + 1), fci(MX + 1), fc(MX + 1);
-const int Mod = 1e9 + 7;
-
-void Inverses() {
-  inv[1] = 1;
-  for (int i = 2; i <= MX; i++) {
-    inv[i] = Mod - Mod / i * inv[Mod % i] % Mod;
+int modexp(int base, int exp, int mod = MOD) {
+  int res = 1;
+  base %= mod;
+  while (exp > 0) {
+    if (exp & 1) res = mod_mul(res, base, mod);
+    base = mod_mul(base, base, mod);
+    exp >>= 1;
   }
+  return res;
 }
 
-void Factorials() {
-  fc[0] = fc[1] = 1;
-  for (int i = 2; i <= MX; i++) {
-    fc[i] = fc[i - 1] * i % Mod;
-  }
+int inv(int a, int m = MOD) {
+  return modexp(a, m - 2, m);
 }
 
-void InverseFactorials() {
-  Inverses();
-  Factorials();
-  fci[1] = fci[0] = 1;
-  for (int i = 2; i <= MX; i++) {
-    fci[i] = fci[i - 1] * inv[i] % Mod;
-  }
+vi fact(int n, int mod = MOD) {
+  vi f(n + 1, 1);
+  for (int i = 2; i <= n; i++)
+    f[i] = mod_mul(f[i - 1], i, mod);
+  return f;
 }
 
-int nck(int num, int k) {
-  if (num < 0) {
-    return 0;
-  }
-  if (k < 0) {
-    return 0;
-  }
-  if (num < k) {
-    return 0;
-  } else {
-    return fc[num] * fci[k] % Mod * fci[num - k] % Mod;
-  }
+vi invfact(int n, int mod = MOD) {
+  vi facts = fact(n, mod);
+  vi invf(n + 1, 1);
+  invf[n] = modexp(facts[n], mod - 2, mod);
+  for (int i = n - 1; i >= 0; i--)
+    invf[i] = mod_mul(invf[i + 1], i + 1, mod);
+  return invf;
 }
 
-int BinExpItermod(int a, int b) {
-  int ans = 1;
-  while (b > 0) {
-    if (b & 1) {
-      ans = (ans * a) % mod;
-    }
-    a = (a * a) % mod;
-    b = b >> 1;
-  }
-  return ans;
+vector<int> comb_fact, comb_invfact;
+
+void init_comb(int n, int mod = MOD) {
+  comb_fact = fact(n, mod);
+  comb_invfact = invfact(n, mod);
+}
+
+int nCr(int n, int r, int mod = MOD) {
+  if (r < 0 || r > n) return 0;
+  int res = mod_mul(comb_fact[n], comb_invfact[r], mod);
+  return mod_mul(res, comb_invfact[n - r], mod);
 }
 ```

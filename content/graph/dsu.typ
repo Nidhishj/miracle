@@ -1,3 +1,5 @@
+== dsu.h
+```cpp
 struct DSU {
   vector<int> p, sz;
   DSU(int n) {
@@ -17,3 +19,5 @@ struct DSU {
   }
   int size(int x) { return sz[find(x)]; }
 };
+
+```

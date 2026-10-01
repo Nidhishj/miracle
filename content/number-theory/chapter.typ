@@ -1,5 +1,6 @@
 #include "ModularArithmetic.typ"
 #include "bit_bns.typ"
+#include "knapsack.typ"
 #include "matrix_expo.typ"
 #include "my_math.typ"
 #include "some_dp.typ"
