@@ -1,3 +1,4 @@
+#include "FenwickTree.typ"
 #include "LazySegTree.typ"
 #include "LazySegTree2D.typ"
 #include "Mos.typ"
