@@ -38,6 +38,9 @@
 #heading(outlined: true, level: 1)[Graph]
 #include "content/graph/chapter.typ"
 
+#heading(outlined: true, level: 1)[Geometry]
+#include "content/geometry/chapter.typ"
+
 
 #heading(outlined: true, level: 1)[Number Theory]
 #include "content/number-theory/chapter.typ"
