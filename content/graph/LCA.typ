@@ -6,9 +6,9 @@ struct LCA {
   vi st, path, ret;
   vi en, d;
   RMQ<int> rmq;
-  LCA(vector<vi> &C)
+  LCA(vector<vi>& C)
       : st(sz(C)), en(sz(C)), d(sz(C)), rmq((dfs(C, 0, -1), ret)) {}
-  void dfs(vvi &adj, int v, int par) {
+  void dfs(vvi& adj, int v, int par) {
     st[v] = T++;
     for (auto to : adj[v])
       if (to != par) {

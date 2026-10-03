@@ -73,9 +73,9 @@ void find_cutpoints() {
 }
 
 // arya bridges
-void findBridges_dfs(int u, int p, int &time, vector<vector<int>> &adj,
-                     vector<int> &disc, vector<int> &low,
-                     vector<pair<int, int>> &bridges) {
+void findBridges_dfs(int u, int p, int& time, vector<vector<int>>& adj,
+                     vector<int>& disc, vector<int>& low,
+                     vector<pair<int, int>>& bridges) {
   disc[u] = low[u] = time++;
 
   for (int v : adj[u]) {
@@ -94,7 +94,7 @@ void findBridges_dfs(int u, int p, int &time, vector<vector<int>> &adj,
   }
 }
 
-vector<pair<int, int>> findBridges(int n, vector<vector<int>> &adj) {
+vector<pair<int, int>> findBridges(int n, vector<vector<int>>& adj) {
   vector<int> disc(n, -1), low(n, -1);
   vector<pair<int, int>> bridges;
   int time = 0;

@@ -2,7 +2,7 @@ int BLOCK = DO_NOT_FORGET_TO_CHANGE_THIS;
 struct Query {
   int l, r, id;
   Query(int _l, int _r, int _id) : l(_l), r(_r), id(_id) {}
-  bool operator<(Query &o) {
+  bool operator<(Query& o) {
     int mblock = l / BLOCK, oblock = o.l / BLOCK;
     return (mblock < oblock) or
            (mblock == oblock and mblock % 2 == 0 and r < o.r) or
@@ -24,7 +24,7 @@ void solve() {
   auto rem = [&](int v) {};
   vector<int> out(q);  // Change out type if necessary
   int cur_l = 0, cur_r = -1;
-  for (auto &[l, r, id] : queries) {
+  for (auto& [l, r, id] : queries) {
     while (cur_l > l)
       add(--cur_l);
     while (cur_l < l)

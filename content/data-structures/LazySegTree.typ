@@ -14,7 +14,7 @@ class LazySegTree {
     // marked.resize(4 * n + 1, false);
   }
 
-  void build(int node, int start, int end, const vector<T> &arr) {
+  void build(int node, int start, int end, const vector<T>& arr) {
     if (start == end) {
       tree[node] = arr[start];
     } else {

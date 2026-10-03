@@ -3,11 +3,11 @@
 // O(log n) LCA with Kth anc
 struct LCA {
   int n;
-  vvi &adjLists;
+  vvi& adjLists;
   int lg;
   vvi up;
   vi depth;
-  LCA(vvi &_adjLists, int root = 0) : n(sz(_adjLists)), adjLists(_adjLists) {
+  LCA(vvi& _adjLists, int root = 0) : n(sz(_adjLists)), adjLists(_adjLists) {
     lg = 1;
     int pw = 1;
     while (pw <= n)

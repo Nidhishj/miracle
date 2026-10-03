@@ -1,7 +1,7 @@
 == matrix_expo.h
 ```cpp
-int **matrixmul(int **matrix1, int **matrix2) {
-  int **matrix3 = new int *[2];
+int** matrixmul(int** matrix1, int** matrix2) {
+  int** matrix3 = new int*[2];
   for (int i = 0; i < 2; i++)
     matrix3[i] = new int[2];
 
@@ -21,7 +21,7 @@ int **matrixmul(int **matrix1, int **matrix2) {
   return matrix3;
 }
 
-int **matrixexpo(int **matrix, int n, int **ans) {
+int** matrixexpo(int** matrix, int n, int** ans) {
   while (n > 0) {
     if (n % 2 == 1)
       ans = matrixmul(ans, matrix);

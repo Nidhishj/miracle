@@ -4,7 +4,7 @@ struct RangeUpdateTree {
   vector<T> tree;
   T identity;
   F merge;
-  RangeUpdateTree(const vector<T> &arr, T id, F _m)
+  RangeUpdateTree(const vector<T>& arr, T id, F _m)
       : n((int)arr.size()), tree(2 * n), identity(id), merge(_m) {
     for (int i = 0; i < n; i++)
       tree[n + i] = arr[i];

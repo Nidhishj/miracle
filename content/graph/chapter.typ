@@ -6,3 +6,7 @@
 #include "dijkstra.typ"
 #include "dsu.typ"
 #include "floyd_washall.typ"
+#include "functional.typ"
+#include "kosaraju.typ"
+#include "kruskal.typ"
+#include "planet_queries.typ"

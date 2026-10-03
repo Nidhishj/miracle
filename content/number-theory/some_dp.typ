@@ -1,7 +1,7 @@
 == some_dp.h
 ```cpp
 // LIS
-int lis(vector<int> const &a) {
+int lis(vector<int> const& a) {
   int n = a.size();
   const int INF = 1e9;
   vector<int> d(n + 1, INF);

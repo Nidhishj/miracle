@@ -5,7 +5,7 @@ struct RH {
   // using H1 = RH<1000000007, 91138233>;
   // using H2 = RH<1000000009, 97266353>;
   vector<long long> h, p;
-  RH(const string &s) {
+  RH(const string& s) {
     int n = s.size();
     h.resize(n + 1, 0);
     p.resize(n + 1, 0);

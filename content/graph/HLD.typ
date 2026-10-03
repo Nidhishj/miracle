@@ -3,10 +3,10 @@
 struct HLD {
   int n, timer = 0;
   vi top, tin, p, sub;
-  HLD(vvi &adj) : n(sz(adj)), top(n), tin(n), p(n, -1), sub(n, 1) {
+  HLD(vvi& adj) : n(sz(adj)), top(n), tin(n), p(n, -1), sub(n, 1) {
     vi ord(n + 1);
     for (int i = 0, t = 0, v = ord[i]; i < n; v = ord[++i])
-      for (auto &to : adj[v])
+      for (auto& to : adj[v])
         if (to != p[v])
           p[to] = v, ord[++t] = to;
     for (int i = n - 1, v = ord[i]; i > 0; v = ord[--i])
@@ -19,7 +19,7 @@ struct HLD {
                   }));
     function<void(int)> dfs = [&](int v) {
       tin[v] = timer++;
-      for (auto &to : adj[v])
+      for (auto& to : adj[v])
         if (to != p[v]) {
           top[to] = (to == adj[v][0] ? top[v] : to);
           dfs(to);

@@ -1,18 +1,18 @@
 class TrieNode {
  public:
-  unordered_map<char, TrieNode *> children;
+  unordered_map<char, TrieNode*> children;
   bool isEndOfWord;
 
   TrieNode() : isEndOfWord(false) {}
 };
 class Trie {
  private:
-  TrieNode *root;
+  TrieNode* root;
 
  public:
   Trie() { root = new TrieNode(); }
-  void insert(const string &word) {
-    TrieNode *node = root;
+  void insert(const string& word) {
+    TrieNode* node = root;
     for (char ch : word) {
       if (node->children.find(ch) == node->children.end()) {
         node->children[ch] = new TrieNode();
@@ -21,8 +21,8 @@ class Trie {
     }
     node->isEndOfWord = true;
   }
-  bool search(const string &word) {
-    TrieNode *node = root;
+  bool search(const string& word) {
+    TrieNode* node = root;
     for (char ch : word) {
       if (node->children.find(ch) == node->children.end()) {
         return false;
@@ -31,8 +31,8 @@ class Trie {
     }
     return node->isEndOfWord;
   }
-  bool startsWith(const string &prefix) {
-    TrieNode *node = root;
+  bool startsWith(const string& prefix) {
+    TrieNode* node = root;
     for (char ch : prefix) {
       if (node->children.find(ch) == node->children.end()) {
         return false;
