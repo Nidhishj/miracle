@@ -12,6 +12,12 @@ long long mod_add(long long a, long long b, long long mod = MOD) {
   return (((a + b) % mod) + mod) % mod;
 }
 
+long long mod_sub(long long a, long long b, long long mod = MOD) {
+  a = a % mod;
+  b = b % mod;
+  return (((a - b) % mod) + mod) % mod;
+}
+
 int modexp(int base, int exp, int mod = MOD) {
   int res = 1;
   base %= mod;
@@ -25,6 +31,10 @@ int modexp(int base, int exp, int mod = MOD) {
 
 int inv(int a, int m = MOD) {
   return modexp(a, m - 2, m);
+}
+
+long long mod_div(long long a, long long b, long long mod = MOD) {
+  return mod_mul(a, inv(b, mod), mod);
 }
 
 vi fact(int n, int mod = MOD) {
