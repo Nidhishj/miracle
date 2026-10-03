@@ -45,7 +45,7 @@ and the projected point is $a + t(b-a)$.
 
 *Line intersection:*
 Write the lines as $a + t(b-a)$ and $c + s(d-c)$. Let
-Let `den` be the cross product of $b-a$ and $d-c$.
+`den` be the cross product of $b-a$ and $d-c$.
 If `den` is zero, the lines are parallel or coincident. Otherwise,
 the parameter $t$ is the cross product of $c-a$ and $d-c$, divided by `den`,
 and the intersection is $a + t(b-a)$.
@@ -53,6 +53,30 @@ and the intersection is $a + t(b-a)$.
 `segmentIntersectionPoint` also checks that the point lies inside both segments.
 Collinear overlapping segments do not have one unique intersection point;
 `collinearSegmentIntersectionLength` returns the length of their overlap instead.
+
+*Circle geometry:*
+A circle is represented by a center $o$ and radius $r$. A point $p$ is inside
+or on the circle when $|p-o| <= r$.
+
+For an external point $p$, the tangent triangle is right-angled at the tangent
+point. Therefore the length of either tangent is
+$ sqrt(|p-o|^2 - r^2) $.
+`tangentLength` returns this length and fails when the point is strictly inside.
+`tangentPoints` returns the one tangent point when $p$ is on the circle, or the
+two tangent points when $p$ is outside.
+
+To intersect a line and a circle, first project the circle center onto the line.
+If the distance from the center to the line is greater than $r$, there is no
+intersection. Otherwise move from the projection in both line directions by
+$ sqrt(r^2 - d^2) $, where $d$ is the distance from the center to the line.
+`circleLineIntersections` returns zero, one, or two points.
+
+For two circles with center distance $d$, let
+$ x = (r_1^2 - r_2^2 + d^2) / (2d) $.
+The common chord is perpendicular to the line of centers, and its half-length is
+$ h = sqrt(r_1^2 - x^2) $.
+`circleCircleIntersections` returns zero, one, or two points. Coincident circles
+have infinitely many intersections, so the function returns false for that case.
 
 *Convex hull note:*
 The monotone chain hull repeatedly removes the last point while the cross product
